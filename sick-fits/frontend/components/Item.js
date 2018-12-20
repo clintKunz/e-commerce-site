@@ -33,7 +33,7 @@ export default class Item extends Component {
                         query: { id: item.id }
                     }}><a>Edit ✏️</a></Link>
                     <button>Add To Cart</button>
-                    <DeleteItem>Delete Item</DeleteItem>
+                    <DeleteItem id={item.id}>Delete Item</DeleteItem>
                 </div>
             </Title>
         </ItemStyles>
