@@ -81,6 +81,7 @@ class CreateItem extends Component {
                             <label htmlFor="file">
                                 Image
                                 <input type="file" id="file" name="file" placeholder="Upload An Image" onChange={this.uploadFile}/>
+                                {this.state.image && <img src={this.state.image} width="200" alt="Upload Preview"/>}
                             </label>
                             <label htmlFor="title">
                                 Title 
