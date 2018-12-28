@@ -3,9 +3,8 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
-import { CURRENT_USER_QUERY } from './User';
 
-const REQUEST_RESET_MUTATION= gql`
+const REQUEST_RESET_MUTATION = gql`
   mutation REQUEST_RESET_MUTATION($email: String!) {
     requestReset(email: $email) {
       message
@@ -22,17 +21,15 @@ class RequestReset extends Component {
   };
   render() {
     return (
-      <Mutation
-        mutation={REQUEST_RESET_MUTATION}
-        variables={this.state}
-      >
+      <Mutation mutation={REQUEST_RESET_MUTATION} variables={this.state}>
         {(reset, { error, loading, called }) => (
           <Form
             method="post"
+            data-test="form"
             onSubmit={async e => {
               e.preventDefault();
               await reset();
-              this.setState({ email: '', });
+              this.setState({ email: '' });
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
@@ -49,7 +46,8 @@ class RequestReset extends Component {
                   onChange={this.saveToState}
                 />
               </label>
-              <button type="submit">Request Reset</button>
+
+              <button type="submit">Request Reset!</button>
             </fieldset>
           </Form>
         )}
@@ -59,4 +57,4 @@ class RequestReset extends Component {
 }
 
 export default RequestReset;
-export { REQUEST_RESET_MUTATION};
+export { REQUEST_RESET_MUTATION };
