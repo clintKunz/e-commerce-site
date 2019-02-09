@@ -28,7 +28,7 @@ class DeleteItem extends Component {
             <Mutation mutation={DELETE_ITEM_MUTATION} variables={{id: this.props.id}} update={this.update}>
                 {(deleteItem, { error }) => (
                     <button onClick={() => {
-                        if(confirm('Are your sure you want to delete this item?')) { deleteItem(); }
+                        if(confirm('Are your sure you want to delete this item?')) { deleteItem().catch(err => { alert(err.message) }); }
                     }}>{this.props.children}</button>
                 )}
             </Mutation>
